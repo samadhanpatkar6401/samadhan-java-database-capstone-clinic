@@ -1,7 +1,7 @@
 package com.project.back_end.controllers;
 
 import com.project.back_end.models.Admin;
-import com.project.back_end.services.Service;
+import com.project.back_end.services.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +12,11 @@ import java.util.Map;
 @RequestMapping("${api.path}admin") // Base URL path for admin endpoints
 public class AdminController {
 
-    private final Service service;
+    private final AppService service;
 
     // Constructor injection of the Service
     @Autowired
-    public AdminController(Service service) {
+    public AdminController(AppService service) {
         this.service = service;
     }
 

@@ -2,19 +2,19 @@ package com.project.back_end.services;
 
 import com.project.back_end.models.*;
 import com.project.back_end.repo.*;
+import com.project.back_end.DTO.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.Service;
-import com.project.back_end.DTO.Login;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-
-public class Service {
+@Service  // Spring detects this as a bean
+public class AppService {
 
     private final TokenService tokenService;
     private final AdminRepository adminRepository;
@@ -24,12 +24,12 @@ public class Service {
     private final PatientService patientService;
 
     @Autowired
-    public Service(TokenService tokenService,
-                   AdminRepository adminRepository,
-                   DoctorRepository doctorRepository,
-                   PatientRepository patientRepository,
-                   DoctorService doctorService,
-                   PatientService patientService) {
+    public AppService(TokenService tokenService,
+                      AdminRepository adminRepository,
+                      DoctorRepository doctorRepository,
+                      PatientRepository patientRepository,
+                      DoctorService doctorService,
+                      PatientService patientService) {
         this.tokenService = tokenService;
         this.adminRepository = adminRepository;
         this.doctorRepository = doctorRepository;
@@ -77,7 +77,7 @@ public class Service {
         }
     }
 
-    // 3. Filter Doctors by name, specialty, and time
+    // 3. Filter Doctors
     public Map<String, Object> filterDoctor(String name, String specialty, String time) {
         return doctorService.filterDoctorsByNameSpecilityandTime(name, specialty, time);
     }

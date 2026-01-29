@@ -3,7 +3,7 @@ package com.project.back_end.controllers;
 import com.project.back_end.models.Patient;
 import com.project.back_end.DTO.Login;
 import com.project.back_end.services.PatientService;
-import com.project.back_end.services.Service;
+import com.project.back_end.services.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ import java.util.Map;
 public class PatientController {
 
     private final PatientService patientService;
-    private final Service service;
+    private final AppService service;
 
     @Autowired
-    public PatientController(PatientService patientService, Service service) {
+    public PatientController(PatientService patientService, AppService service) {
         this.patientService = patientService;
         this.service = service;
     }

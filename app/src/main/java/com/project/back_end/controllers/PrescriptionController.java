@@ -2,7 +2,7 @@ package com.project.back_end.controllers;
 
 import com.project.back_end.models.Prescription;
 import com.project.back_end.services.PrescriptionService;
-import com.project.back_end.services.Service;
+import com.project.back_end.services.AppService;
 import com.project.back_end.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +16,11 @@ import java.util.Map;
 public class PrescriptionController {
 
     private final PrescriptionService prescriptionService;
-    private final Service service;
+    private final AppService service;
     private final AppointmentService appointmentService;
 
     @Autowired
-    public PrescriptionController(PrescriptionService prescriptionService, Service service, AppointmentService appointmentService) {
+    public PrescriptionController(PrescriptionService prescriptionService, AppService service, AppointmentService appointmentService) {
         this.prescriptionService = prescriptionService;
         this.service = service;
         this.appointmentService = appointmentService;
