@@ -1,34 +1,28 @@
 package com.project.back_end.mvc;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.project.back_end.service.TokenValidationService;
+import com.project.back_end.services.TokenService;
 
 @Controller
 public class DashboardController {
 
-    // Autowire the service that validates JWT tokens
     @Autowired
-    private TokenValidationService tokenValidationService;
+    private TokenService tokenService;
 
     // Admin Dashboard
     @GetMapping("/adminDashboard/{token}")
     public String adminDashboard(@PathVariable String token) {
 
-        // Validate token for admin role
-        Map<String, String> result = tokenValidationService.validateToken(token, "admin");
+        boolean isValid = tokenService.validateToken(token, "admin");
 
-        // If map is empty → token is valid
-        if (result.isEmpty()) {
+        if (isValid) {
             return "admin/adminDashboard";
         }
 
-        // If token is invalid → redirect to login/home page
         return "redirect:/";
     }
 
@@ -36,15 +30,12 @@ public class DashboardController {
     @GetMapping("/doctorDashboard/{token}")
     public String doctorDashboard(@PathVariable String token) {
 
-        // Validate token for doctor role
-        Map<String, String> result = tokenValidationService.validateToken(token, "doctor");
+        boolean isValid = tokenService.validateToken(token, "doctor");
 
-        // If map is empty → token is valid
-        if (result.isEmpty()) {
+        if (isValid) {
             return "doctor/doctorDashboard";
         }
 
-        // If token is invalid → redirect to login/home page
         return "redirect:/";
     }
 }
