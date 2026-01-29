@@ -1,53 +1,192 @@
-/* this is the style sheet file for index.htlm  */
+/* ============================
+   Global Reset
+   ============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* 
-**Global Reset (`*`)**
+/* ============================
+   Base Styles
+   ============================ */
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+}
 
-* Remove all default margin and padding.
-* Use `border-box` for sizing to include padding and border in element size.
+/* ============================
+   Wrapper Layout
+   ============================ */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-**Base (`html, body`)**
+/* ============================
+   Heading
+   ============================ */
+h2 {
+    font-size: 48px;
+    margin-bottom: 50px;
+    color: #003e3e;
+    font-weight: bold;
+    font-family: 'Alegreya', 'Roboto', sans-serif;
+    text-align: center;
+}
 
-* Set height to 100% for full viewport layout.
-* Use the `'Roboto'` sans-serif font for modern, clean typography.
+/* ============================
+   Main Content Area
+   ============================ */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('../assets/images/bg/main-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-**Layout Wrapper (`.wrapper`)**
+/* ============================
+   Buttons
+   ============================ */
+button {
+    background-color: #015c5d;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    width: 200px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
 
-* Use a vertical flexbox layout.
-* Ensure the wrapper covers at least the full height of the screen (`min-height: 100vh`).
+button:hover {
+    background-color: #A62B1F;
+}
 
-**Heading (`h2`)**
+/* Dashboard Buttons */
+.dashboard-btn {
+    background-color: #015c5d;
+}
 
-* Set a large font size (`48px`) for prominence.
-* Add a bottom margin of `50px` for spacing.
-* Use a dark teal color (`#003e3e`).
-* Make the font bold and use a blended font stack (`'Alegreya', 'Roboto', sans-serif`) for elegant styling.
+.dashboard-btn:hover {
+    background-color: #003e3e;
+}
 
-**Main Section (`.main-content`)**
+/* ============================
+   Modal Styles
+   ============================ */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent overlay */
+}
 
-* Allow the section to grow to fill space with `flex-grow: 1`.
-* Add `40px` of internal padding.
-* Center content both horizontally and vertically using `justify-content` and `align-items`.
-* Display items in a column direction.
-* Center all text.
-* Apply a full-screen background image with:
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
 
-  * `cover` size
-  * `center` positioning
-  * no repeat
-  * `fixed` attachment to keep image still during scroll
+/* Close Button */
+#closeModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-**Buttons (`button`)**
+#closeModal:hover {
+    color: #000;
+}
 
-* Style with a teal green background (`#015c5d`) and white text.
-* Remove borders and round the corners (`12px`).
-* Use `10px 20px` padding and set width to `200px`.
-* Add a top margin of `10px` for spacing.
-* Enable pointer cursor and readable font size (`16px`).
-* On hover, change background color to bold red (`#A62B1F`).
+/* ============================
+   Header & Footer Styles
+   ============================ */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #003e3e;
+    color: #fff;
+}
 
-**Dashboard Buttons (`.dashboard-btn`)**
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
 
-* Use the same base green background (`#015c5d`) as the default button.
-* On hover, darken the background to deep teal (`#003e3e`) for visual feedback.
- */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #003e3e;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+/* ============================
+   Interactive Styles
+   ============================ */
+input, select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    width: 100%;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    border-color: #015c5d;
+    outline: none;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================
+   Responsive tweaks
+   ============================ */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        width: 150px;
+        padding: 8px 16px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}
